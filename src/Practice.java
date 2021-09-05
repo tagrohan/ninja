@@ -2,10 +2,40 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Practice {
-   public static void main(String[] args) {
 
-      System.out.println(replacePi("pip")); // 3.143.14
+   public static void main(String[] args) {
+      System.out.println(convertHel("000012301"));
    }
+
+   // todo will do it later
+   private static int convertHel(String str) {
+      return Integer.parseInt(convertToInt(str, ""));
+   }
+
+   private static String convertToInt(String str, String asf) {
+
+      if (str.length() == 1) return str;
+
+      char ch = str.charAt(0);
+
+      String num = "";
+      if (ch != '0' || asf.equals("")) {
+         num = convertToInt(str.substring(1), asf + ch);
+      }
+      return ch + num;
+   }
+
+   private static String replaceX(String str) {
+
+      if (str.length() == 0)
+         return "";
+
+      char ch = str.charAt(0);
+      String res = replaceX(str.substring(1));
+      if (ch == 'x') return res;
+      else return ch + res;
+   }
+
 
    private static String replacePi(String str) {
       if (str.length() == 1) {
