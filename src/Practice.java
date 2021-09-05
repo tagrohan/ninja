@@ -4,7 +4,23 @@ import java.util.Set;
 public class Practice {
    public static void main(String[] args) {
 
-      System.out.println(findPairTo(new int[]{6,2, 3, 2, 3}, 4));
+      System.out.println(replacePi("pip")); // 3.143.14
+   }
+
+   private static String replacePi(String str) {
+      if (str.length() == 1) {
+         return str;
+      }
+      char ch = str.charAt(0);
+      String result = replacePi(str.substring(1));
+
+      if (result.charAt(0) == 'i') {
+         if (ch == 'p') {
+            return 3.14 + result.substring(1);
+         }
+      }
+
+      return ch + result;
    }
 
    private static boolean findPairTo(int[] arr, int k) {
