@@ -4,10 +4,18 @@ import java.util.Set;
 public class Practice {
 
    public static void main(String[] args) {
-
+      System.out.println(removeX("xabxcxax"));
    }
-   private static String removeX(String str){
-      return "";
+
+   private static String removeX(String str) {
+      if (str.length() == 0) return "";
+
+      char ch = str.charAt(0);
+      String cStr = removeX(str.substring(1));
+      if (ch == 'x') {
+         return cStr;
+      }
+      return ch + cStr;
    }
 
    private static int convertToInt(String str) {
