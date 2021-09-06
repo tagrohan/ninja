@@ -1,13 +1,34 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Practice {
 
    public static void main(String[] args) {
-      System.out.println(removeX("xabxcxax"));
+      mergeSort(new int[]{4, 3, 2, 5, 6}, new int[]{7, 5, 2, 1, 3, 4, 2, 3});
+   }
+
+   private static void mergeSort(int[] arr, int[] arr2) {
+      int len1 = arr.length, len2 = arr2.length;
+      int[] sorted = new int[len1 + len2];
+      Arrays.sort(arr); // 2 3 4 5 6
+      Arrays.sort(arr2);// 1 2 2 3 3 4 5 7
+      int ptr1 = 0, ptr2 = 0, pointer = 0;
+
+      while (ptr1 < len1 && ptr2 < len2) {
+         if (arr[ptr1] <= arr2[ptr2]) {
+            sorted[pointer++] = arr[ptr1++];
+         } else if (arr2[ptr2] < arr[ptr1]) {
+            sorted[pointer++] = arr2[ptr2++];
+         }
+      }
+      while (ptr1 < len1) sorted[pointer++] = arr[ptr1++];
+      while (ptr2 < len2) sorted[pointer++] = arr2[ptr2++];
+      System.out.println(Arrays.toString(sorted));
    }
 
    private static String removeX(String str) {
+//      System.out.println(removeX("xabxcxax"));
       if (str.length() == 0) return "";
 
       char ch = str.charAt(0);
