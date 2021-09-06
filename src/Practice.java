@@ -4,26 +4,28 @@ import java.util.Set;
 public class Practice {
 
    public static void main(String[] args) {
-      System.out.println(convertHel("000012301"));
+
    }
 
-   // todo will do it later
-   private static int convertHel(String str) {
-      return Integer.parseInt(convertToInt(str, ""));
+   private static int convertToInt(String str) {
+
+      return -1;
    }
 
-   private static String convertToInt(String str, String asf) {
-
-      if (str.length() == 1) return str;
+   private static String addStarInBtw(String str) {
+//      System.out.println(addStarInBtw("aaaaa"));
+      if (str.length() == 1) {
+         return str;
+      }
 
       char ch = str.charAt(0);
-
-      String num = "";
-      if (ch != '0' || asf.equals("")) {
-         num = convertToInt(str.substring(1), asf + ch);
+      String half = addStarInBtw(str.substring(1));
+      if (ch == half.charAt(0)) {
+         return ch + "*" + half;
       }
-      return ch + num;
+      return ch + half;
    }
+
 
    private static String replaceX(String str) {
 
