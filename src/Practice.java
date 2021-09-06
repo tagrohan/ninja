@@ -6,10 +6,20 @@ public class Practice {
    public static void main(String[] args) {
 
    }
+   private static String removeX(String str){
+      return "";
+   }
 
    private static int convertToInt(String str) {
+//      System.out.println(convertToInt("00001203"));
+      if (str.length() == 1) {
+         return Integer.parseInt(str);
+      }
+      char ch = str.charAt(0); // 2
+      int val = convertToInt(str.substring(1)); // 3
 
-      return -1;
+      return (ch - '0') * (int) Math.pow(10, str.length() - 1) + val;
+
    }
 
    private static String addStarInBtw(String str) {
