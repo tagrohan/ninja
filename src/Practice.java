@@ -5,10 +5,20 @@ import java.util.Set;
 public class Practice {
 
    public static void main(String[] args) {
-      mergeSort(new int[]{4, 3, 2, 5, 6}, new int[]{7, 5, 2, 1, 3, 4, 2, 3});
-   }
 
-   private static void mergeSort(int[] arr, int[] arr2) {
+   }
+   private static int[] mergeSort(int[] arr, int start, int end) {
+//      System.out.println(Arrays.toString(mergeSort(new int[]{7, 5, 2, 1, 3, 4, 2, 3}, 0, 7)));
+      if (start == end) {
+         return new int[]{arr[start]};
+      }
+      int mid = (start + end) / 2;
+      int[] firstHalf = mergeSort(arr, start, mid);
+      int[] secondHalf = mergeSort(arr, mid + 1, end);
+      return mergeSortedArray(firstHalf, secondHalf);
+   }
+   private static int[] mergeSortedArray(int[] arr, int[] arr2) {
+//      mergeSortedArray(new int[]{4, 3, 2, 5, 6}, new int[]{7, 5, 2, 1, 3, 4, 2, 3});
       int len1 = arr.length, len2 = arr2.length;
       int[] sorted = new int[len1 + len2];
       Arrays.sort(arr); // 2 3 4 5 6
@@ -24,7 +34,8 @@ public class Practice {
       }
       while (ptr1 < len1) sorted[pointer++] = arr[ptr1++];
       while (ptr2 < len2) sorted[pointer++] = arr2[ptr2++];
-      System.out.println(Arrays.toString(sorted));
+//      System.out.println(Arrays.toString(sorted));
+      return sorted;
    }
 
    private static String removeX(String str) {
